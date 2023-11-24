@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3030;
 
 dotenv.config();
 app.use(express.json());
+app.options("*", cors());
 
 const corsOptions = {
   origin: "*",
