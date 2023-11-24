@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const app = express();
@@ -6,6 +7,11 @@ const PORT = process.env.PORT || 3030;
 
 dotenv.config();
 app.use(express.json());
+
+const corsOptions = {
+  origin: "https://ekiio.vercel.app",
+  methods: "POST",
+};
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -18,7 +24,7 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/sendmail", (req, res) => {
+app.post("/sendmail", cors(corsOptions), (req, res) => {
   const { name, email, subject, message } = req.body;
 
   let mailOptions = {
