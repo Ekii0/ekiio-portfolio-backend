@@ -10,7 +10,7 @@ app.use(express.json());
 app.options("*", cors());
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://ekiio.vercel.app",
   methods: "POST",
 };
 
