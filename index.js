@@ -26,7 +26,6 @@ let transporter = nodemailer.createTransport({
 });
 
 app.post("/sendmail", cors(corsOptions), (req, res) => {
-  console.log("Request received", req.body);
   const { name, email, subject, message } = req.body;
 
   let mailOptions = {
